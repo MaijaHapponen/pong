@@ -3,6 +3,8 @@
 
 #include "types.h"
  
+#define SIMULATOR 1
+
 void delay_250ns(void);
 void delay_500ns(void);
 void delay_mikro(unsigned int us);

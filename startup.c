@@ -2,6 +2,7 @@
 #include "asciidisplay.h"
 #include "ports.h"
  
+ 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
 void startup ( void )
@@ -13,11 +14,11 @@ asm volatile(
 	".L1: B .L1\n"				/* never return */
 	) ;
 }
-/*
+
 void init_app(void)
 {
 	*GPIO_E_MODER = 0x55555555;
-}*/
+}
 
 void main(void)
 {

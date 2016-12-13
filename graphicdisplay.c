@@ -119,7 +119,7 @@ uint8_t graphic_read_data(uint8_t controller){
 }
 
 
-void init_app(void){
+void init_graphic_port(void){
 		/* PORT E */
 	*GPIO_E_MODER = 0x55555555; /* all bits outputs */
 	*GPIO_E_OTYPER = 0x00000000; /* outputs are push/pull */

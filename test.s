@@ -28,185 +28,219 @@
    2:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** #include "asciidisplay.h"
    3:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** #include "ports.h"
    4:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c ****  
-   5:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
-   6:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 
-   7:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void startup ( void )
-   8:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
-  28              		.loc 1 8 0
+   5:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c ****  
+   6:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+   7:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 
+   8:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void startup ( void )
+   9:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
+  28              		.loc 1 9 0
   29              		.cfi_startproc
   30              		@ Naked Function: prologue and epilogue provided by programmer.
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 1, uses_anonymous_args = 0
-   9:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** asm volatile(
-  33              		.loc 1 9 0
+  10:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** asm volatile(
+  33              		.loc 1 10 0
   34              		.syntax divided
-  35              	@ 9 "/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c" 1
+  35              	@ 10 "/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c" 1
   36 0000 0248     		 LDR R0,=0x2001C000
   37 0002 8546     	 MOV SP,R0
   38 0004 FFF7FEFF 	 BL main
   39 0008 FEE7     	.L1: B .L1
   40              	
   41              	@ 0 "" 2
-  10:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  11:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" MOV SP,R0\n"
-  12:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" BL main\n"				/* call main */
-  13:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	".L1: B .L1\n"				/* never return */
-  14:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	) ;
-  15:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }
-  42              		.loc 1 15 0
+  11:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  12:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" MOV SP,R0\n"
+  13:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	" BL main\n"				/* call main */
+  14:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	".L1: B .L1\n"				/* never return */
+  15:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	) ;
+  16:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }
+  42              		.loc 1 16 0
   43              		.thumb
   44              		.syntax unified
   45 000a C046     		nop
   46              		.cfi_endproc
   47              	.LFE0:
-  49              		.section	.rodata
+  49              		.text
   50              		.align	2
-  51              	.LC0:
-  52 0000 416C6661 		.ascii	"Alfanumerisk \000"
-  52      6E756D65 
-  52      7269736B 
-  52      2000
-  53 000e 0000     		.align	2
-  54              	.LC2:
-  55 0010 44697370 		.ascii	"Display - test\000"
-  55      6C617920 
-  55      2D207465 
-  55      737400
-  56              		.text
-  57              		.align	2
-  58              		.global	main
-  59              		.code	16
-  60              		.thumb_func
-  62              	main:
-  63              	.LFB1:
-  16:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** /*
-  17:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void init_app(void)
-  18:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
-  19:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	*GPIO_E_MODER = 0x55555555;
-  20:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }*/
-  21:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 
-  22:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void main(void)
-  23:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
-  64              		.loc 1 23 0
-  65              		.cfi_startproc
-  66              		@ args = 0, pretend = 0, frame = 40
-  67              		@ frame_needed = 1, uses_anonymous_args = 0
-  68 0000 90B5     		push	{r4, r7, lr}
-  69              		.cfi_def_cfa_offset 12
-  70              		.cfi_offset 4, -12
-  71              		.cfi_offset 7, -8
-  72              		.cfi_offset 14, -4
-  73 0002 8BB0     		sub	sp, sp, #44
-  74              		.cfi_def_cfa_offset 56
-  75 0004 00AF     		add	r7, sp, #0
-  76              		.cfi_def_cfa_register 7
-  24:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char *s;
-  25:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char test1[] = "Alfanumerisk ";
-  77              		.loc 1 25 0
-  78 0006 1423     		movs	r3, #20
-  79 0008 FB18     		adds	r3, r7, r3
-  80 000a 1D4A     		ldr	r2, .L8
-  81 000c 13CA     		ldmia	r2!, {r0, r1, r4}
-  82 000e 13C3     		stmia	r3!, {r0, r1, r4}
-  83 0010 1288     		ldrh	r2, [r2]
-  84 0012 1A80     		strh	r2, [r3]
-  26:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char test2[] = "Display - test";
-  85              		.loc 1 26 0
-  86 0014 3B1D     		adds	r3, r7, #4
-  87 0016 1B4A     		ldr	r2, .L8+4
-  88 0018 13CA     		ldmia	r2!, {r0, r1, r4}
-  89 001a 13C3     		stmia	r3!, {r0, r1, r4}
-  90 001c 1188     		ldrh	r1, [r2]
-  91 001e 1980     		strh	r1, [r3]
-  92 0020 9278     		ldrb	r2, [r2, #2]
-  93 0022 9A70     		strb	r2, [r3, #2]
-  27:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	
-  28:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	init_app();
-  94              		.loc 1 28 0
-  95 0024 FFF7FEFF 		bl	init_app
-  29:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_init();
-  96              		.loc 1 29 0
-  97 0028 FFF7FEFF 		bl	ascii_init
-  30:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_gotoxy(1,1);
-  98              		.loc 1 30 0
-  99 002c 0121     		movs	r1, #1
- 100 002e 0120     		movs	r0, #1
- 101 0030 FFF7FEFF 		bl	ascii_gotoxy
-  31:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	s = test1;
- 102              		.loc 1 31 0
- 103 0034 1423     		movs	r3, #20
- 104 0036 FB18     		adds	r3, r7, r3
- 105 0038 7B62     		str	r3, [r7, #36]
-  32:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
- 106              		.loc 1 32 0
- 107 003a 06E0     		b	.L3
- 108              	.L4:
- 109              	.LBB2:
-  33:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	{
-  34:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 		ascii_write_char( *s++);
- 110              		.loc 1 34 0
- 111 003c 7B6A     		ldr	r3, [r7, #36]
- 112 003e 5A1C     		adds	r2, r3, #1
- 113 0040 7A62     		str	r2, [r7, #36]
- 114 0042 1B78     		ldrb	r3, [r3]
- 115 0044 1800     		movs	r0, r3
- 116 0046 FFF7FEFF 		bl	ascii_write_char
- 117              	.L3:
- 118              	.LBE2:
-  32:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
- 119              		.loc 1 32 0
- 120 004a 7B6A     		ldr	r3, [r7, #36]
- 121 004c 1B78     		ldrb	r3, [r3]
- 122 004e 002B     		cmp	r3, #0
- 123 0050 F4D1     		bne	.L4
-  35:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	}
-  36:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_gotoxy(1,2);
- 124              		.loc 1 36 0
- 125 0052 0221     		movs	r1, #2
- 126 0054 0120     		movs	r0, #1
- 127 0056 FFF7FEFF 		bl	ascii_gotoxy
-  37:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	s = test2;
- 128              		.loc 1 37 0
- 129 005a 3B1D     		adds	r3, r7, #4
- 130 005c 7B62     		str	r3, [r7, #36]
-  38:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
- 131              		.loc 1 38 0
- 132 005e 06E0     		b	.L5
- 133              	.L6:
- 134              	.LBB3:
-  39:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	{
-  40:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 		ascii_write_char(*s++);
- 135              		.loc 1 40 0
- 136 0060 7B6A     		ldr	r3, [r7, #36]
- 137 0062 5A1C     		adds	r2, r3, #1
- 138 0064 7A62     		str	r2, [r7, #36]
- 139 0066 1B78     		ldrb	r3, [r3]
- 140 0068 1800     		movs	r0, r3
- 141 006a FFF7FEFF 		bl	ascii_write_char
- 142              	.L5:
- 143              	.LBE3:
-  38:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
- 144              		.loc 1 38 0
- 145 006e 7B6A     		ldr	r3, [r7, #36]
- 146 0070 1B78     		ldrb	r3, [r3]
- 147 0072 002B     		cmp	r3, #0
- 148 0074 F4D1     		bne	.L6
-  41:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	}
-  42:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	return 0;
- 149              		.loc 1 42 0
- 150 0076 C046     		nop
-  43:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	
-  44:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }
- 151              		.loc 1 44 0
- 152 0078 BD46     		mov	sp, r7
- 153 007a 0BB0     		add	sp, sp, #44
- 154              		@ sp needed
- 155 007c 90BD     		pop	{r4, r7, pc}
- 156              	.L9:
- 157 007e C046     		.align	2
- 158              	.L8:
- 159 0080 00000000 		.word	.LC0
- 160 0084 10000000 		.word	.LC2
- 161              		.cfi_endproc
- 162              	.LFE1:
- 164              	.Letext0:
+  51              		.global	init_app
+  52              		.code	16
+  53              		.thumb_func
+  55              	init_app:
+  56              	.LFB1:
+  17:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 
+  18:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void init_app(void)
+  19:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
+  57              		.loc 1 19 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 1, uses_anonymous_args = 0
+  61 0000 80B5     		push	{r7, lr}
+  62              		.cfi_def_cfa_offset 8
+  63              		.cfi_offset 7, -8
+  64              		.cfi_offset 14, -4
+  65 0002 00AF     		add	r7, sp, #0
+  66              		.cfi_def_cfa_register 7
+  20:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	*GPIO_E_MODER = 0x55555555;
+  67              		.loc 1 20 0
+  68 0004 024B     		ldr	r3, .L3
+  69 0006 034A     		ldr	r2, .L3+4
+  70 0008 1A60     		str	r2, [r3]
+  21:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }
+  71              		.loc 1 21 0
+  72 000a C046     		nop
+  73 000c BD46     		mov	sp, r7
+  74              		@ sp needed
+  75 000e 80BD     		pop	{r7, pc}
+  76              	.L4:
+  77              		.align	2
+  78              	.L3:
+  79 0010 00100240 		.word	1073876992
+  80 0014 55555555 		.word	1431655765
+  81              		.cfi_endproc
+  82              	.LFE1:
+  84              		.section	.rodata
+  85              		.align	2
+  86              	.LC0:
+  87 0000 416C6661 		.ascii	"Alfanumerisk \000"
+  87      6E756D65 
+  87      7269736B 
+  87      2000
+  88 000e 0000     		.align	2
+  89              	.LC2:
+  90 0010 44697370 		.ascii	"Display - test\000"
+  90      6C617920 
+  90      2D207465 
+  90      737400
+  91              		.text
+  92              		.align	2
+  93              		.global	main
+  94              		.code	16
+  95              		.thumb_func
+  97              	main:
+  98              	.LFB2:
+  22:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 
+  23:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** void main(void)
+  24:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** {
+  99              		.loc 1 24 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 40
+ 102              		@ frame_needed = 1, uses_anonymous_args = 0
+ 103 0018 90B5     		push	{r4, r7, lr}
+ 104              		.cfi_def_cfa_offset 12
+ 105              		.cfi_offset 4, -12
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 001a 8BB0     		sub	sp, sp, #44
+ 109              		.cfi_def_cfa_offset 56
+ 110 001c 00AF     		add	r7, sp, #0
+ 111              		.cfi_def_cfa_register 7
+  25:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char *s;
+  26:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char test1[] = "Alfanumerisk ";
+ 112              		.loc 1 26 0
+ 113 001e 1423     		movs	r3, #20
+ 114 0020 FB18     		adds	r3, r7, r3
+ 115 0022 1D4A     		ldr	r2, .L11
+ 116 0024 13CA     		ldmia	r2!, {r0, r1, r4}
+ 117 0026 13C3     		stmia	r3!, {r0, r1, r4}
+ 118 0028 1288     		ldrh	r2, [r2]
+ 119 002a 1A80     		strh	r2, [r3]
+  27:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	char test2[] = "Display - test";
+ 120              		.loc 1 27 0
+ 121 002c 3B1D     		adds	r3, r7, #4
+ 122 002e 1B4A     		ldr	r2, .L11+4
+ 123 0030 13CA     		ldmia	r2!, {r0, r1, r4}
+ 124 0032 13C3     		stmia	r3!, {r0, r1, r4}
+ 125 0034 1188     		ldrh	r1, [r2]
+ 126 0036 1980     		strh	r1, [r3]
+ 127 0038 9278     		ldrb	r2, [r2, #2]
+ 128 003a 9A70     		strb	r2, [r3, #2]
+  28:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	
+  29:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	init_app();
+ 129              		.loc 1 29 0
+ 130 003c FFF7FEFF 		bl	init_app
+  30:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_init();
+ 131              		.loc 1 30 0
+ 132 0040 FFF7FEFF 		bl	ascii_init
+  31:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_gotoxy(1,1);
+ 133              		.loc 1 31 0
+ 134 0044 0121     		movs	r1, #1
+ 135 0046 0120     		movs	r0, #1
+ 136 0048 FFF7FEFF 		bl	ascii_gotoxy
+  32:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	s = test1;
+ 137              		.loc 1 32 0
+ 138 004c 1423     		movs	r3, #20
+ 139 004e FB18     		adds	r3, r7, r3
+ 140 0050 7B62     		str	r3, [r7, #36]
+  33:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
+ 141              		.loc 1 33 0
+ 142 0052 06E0     		b	.L6
+ 143              	.L7:
+ 144              	.LBB2:
+  34:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	{
+  35:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 		ascii_write_char( *s++);
+ 145              		.loc 1 35 0
+ 146 0054 7B6A     		ldr	r3, [r7, #36]
+ 147 0056 5A1C     		adds	r2, r3, #1
+ 148 0058 7A62     		str	r2, [r7, #36]
+ 149 005a 1B78     		ldrb	r3, [r3]
+ 150 005c 1800     		movs	r0, r3
+ 151 005e FFF7FEFF 		bl	ascii_write_char
+ 152              	.L6:
+ 153              	.LBE2:
+  33:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
+ 154              		.loc 1 33 0
+ 155 0062 7B6A     		ldr	r3, [r7, #36]
+ 156 0064 1B78     		ldrb	r3, [r3]
+ 157 0066 002B     		cmp	r3, #0
+ 158 0068 F4D1     		bne	.L7
+  36:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	}
+  37:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	ascii_gotoxy(1,2);
+ 159              		.loc 1 37 0
+ 160 006a 0221     		movs	r1, #2
+ 161 006c 0120     		movs	r0, #1
+ 162 006e FFF7FEFF 		bl	ascii_gotoxy
+  38:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	s = test2;
+ 163              		.loc 1 38 0
+ 164 0072 3B1D     		adds	r3, r7, #4
+ 165 0074 7B62     		str	r3, [r7, #36]
+  39:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
+ 166              		.loc 1 39 0
+ 167 0076 06E0     		b	.L8
+ 168              	.L9:
+ 169              	.LBB3:
+  40:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	{
+  41:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 		ascii_write_char(*s++);
+ 170              		.loc 1 41 0
+ 171 0078 7B6A     		ldr	r3, [r7, #36]
+ 172 007a 5A1C     		adds	r2, r3, #1
+ 173 007c 7A62     		str	r2, [r7, #36]
+ 174 007e 1B78     		ldrb	r3, [r3]
+ 175 0080 1800     		movs	r0, r3
+ 176 0082 FFF7FEFF 		bl	ascii_write_char
+ 177              	.L8:
+ 178              	.LBE3:
+  39:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	while(*s)
+ 179              		.loc 1 39 0
+ 180 0086 7B6A     		ldr	r3, [r7, #36]
+ 181 0088 1B78     		ldrb	r3, [r3]
+ 182 008a 002B     		cmp	r3, #0
+ 183 008c F4D1     		bne	.L9
+  42:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	}
+  43:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	return 0;
+ 184              		.loc 1 43 0
+ 185 008e C046     		nop
+  44:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** 	
+  45:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/startup.c **** }
+ 186              		.loc 1 45 0
+ 187 0090 BD46     		mov	sp, r7
+ 188 0092 0BB0     		add	sp, sp, #44
+ 189              		@ sp needed
+ 190 0094 90BD     		pop	{r4, r7, pc}
+ 191              	.L12:
+ 192 0096 C046     		.align	2
+ 193              	.L11:
+ 194 0098 00000000 		.word	.LC0
+ 195 009c 10000000 		.word	.LC2
+ 196              		.cfi_endproc
+ 197              	.LFE2:
+ 199              	.Letext0:
