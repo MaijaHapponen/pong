@@ -96,7 +96,7 @@ void ascii_init(void)
 	ascii_command(4,39);
 }
 
-void init_asciidisplay(void)
+void init_ascii_ports(void)
 {
 	*GPIO_E_MODER = 0x55555555;
 }

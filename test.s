@@ -12,347 +12,366 @@
   12              		.eabi_attribute 18, 4
   13              		.thumb
   14              		.syntax unified
-  15              		.file	"objects.c"
+  15              		.file	"startup.c"
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.align	2
-  20              		.global	set_object_speed
-  21              		.code	16
-  22              		.thumb_func
-  24              	set_object_speed:
-  25              	.LFB0:
-  26              		.file 1 "/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c"
-   1:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** #include "objects.h"
-   2:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 
-   3:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** void set_object_speed(POBJECT obj, int speedx, int speedy)
-   4:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** {
-  27              		.loc 1 4 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 16
-  30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31 0000 80B5     		push	{r7, lr}
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 7, -8
-  34              		.cfi_offset 14, -4
-  35 0002 84B0     		sub	sp, sp, #16
-  36              		.cfi_def_cfa_offset 24
-  37 0004 00AF     		add	r7, sp, #0
-  38              		.cfi_def_cfa_register 7
-  39 0006 F860     		str	r0, [r7, #12]
-  40 0008 B960     		str	r1, [r7, #8]
-  41 000a 7A60     		str	r2, [r7, #4]
-   5:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	obj->dirx = speedx;
-  42              		.loc 1 5 0
-  43 000c FB68     		ldr	r3, [r7, #12]
-  44 000e BA68     		ldr	r2, [r7, #8]
-  45 0010 5A60     		str	r2, [r3, #4]
-   6:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	obj->diry = speedy;
-  46              		.loc 1 6 0
-  47 0012 FB68     		ldr	r3, [r7, #12]
-  48 0014 7A68     		ldr	r2, [r7, #4]
-  49 0016 9A60     		str	r2, [r3, #8]
-   7:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** }
-  50              		.loc 1 7 0
-  51 0018 C046     		nop
-  52 001a BD46     		mov	sp, r7
-  53 001c 04B0     		add	sp, sp, #16
-  54              		@ sp needed
-  55 001e 80BD     		pop	{r7, pc}
-  56              		.cfi_endproc
-  57              	.LFE0:
-  59              		.align	2
-  60              		.global	draw_object
-  61              		.code	16
-  62              		.thumb_func
-  64              	draw_object:
-  65              	.LFB1:
-   8:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 
-   9:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** void draw_object(POBJECT obj)
-  10:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** {
-  66              		.loc 1 10 0
-  67              		.cfi_startproc
-  68              		@ args = 0, pretend = 0, frame = 16
-  69              		@ frame_needed = 1, uses_anonymous_args = 0
-  70 0020 80B5     		push	{r7, lr}
-  71              		.cfi_def_cfa_offset 8
-  72              		.cfi_offset 7, -8
-  73              		.cfi_offset 14, -4
-  74 0022 84B0     		sub	sp, sp, #16
-  75              		.cfi_def_cfa_offset 24
-  76 0024 00AF     		add	r7, sp, #0
-  77              		.cfi_def_cfa_register 7
-  78 0026 7860     		str	r0, [r7, #4]
-  79              	.LBB2:
-  11:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(int i=0; i<obj->geo->numpoints; i++)
-  80              		.loc 1 11 0
-  81 0028 0023     		movs	r3, #0
-  82 002a FB60     		str	r3, [r7, #12]
-  83 002c 1CE0     		b	.L3
-  84              	.L4:
-  85              	.LBB3:
-  12:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	{
-  13:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 		pixel(obj->posx + obj->geo->px[i].x, obj->posy + obj->geo->px[i].y, 1);
-  86              		.loc 1 13 0 discriminator 3
-  87 002e 7B68     		ldr	r3, [r7, #4]
-  88 0030 DA68     		ldr	r2, [r3, #12]
-  89 0032 7B68     		ldr	r3, [r7, #4]
-  90 0034 1968     		ldr	r1, [r3]
-  91 0036 FB68     		ldr	r3, [r7, #12]
-  92 0038 0433     		adds	r3, r3, #4
-  93 003a 5B00     		lsls	r3, r3, #1
-  94 003c CB18     		adds	r3, r1, r3
-  95 003e 0433     		adds	r3, r3, #4
-  96 0040 1B78     		ldrb	r3, [r3]
-  97 0042 D018     		adds	r0, r2, r3
-  98 0044 7B68     		ldr	r3, [r7, #4]
-  99 0046 1A69     		ldr	r2, [r3, #16]
- 100 0048 7B68     		ldr	r3, [r7, #4]
- 101 004a 1968     		ldr	r1, [r3]
- 102 004c FB68     		ldr	r3, [r7, #12]
- 103 004e 0433     		adds	r3, r3, #4
- 104 0050 5B00     		lsls	r3, r3, #1
- 105 0052 CB18     		adds	r3, r1, r3
- 106 0054 0533     		adds	r3, r3, #5
- 107 0056 1B78     		ldrb	r3, [r3]
- 108 0058 D318     		adds	r3, r2, r3
- 109 005a 0122     		movs	r2, #1
- 110 005c 1900     		movs	r1, r3
- 111 005e FFF7FEFF 		bl	pixel
- 112              	.LBE3:
-  11:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(int i=0; i<obj->geo->numpoints; i++)
- 113              		.loc 1 11 0 discriminator 3
- 114 0062 FB68     		ldr	r3, [r7, #12]
- 115 0064 0133     		adds	r3, r3, #1
- 116 0066 FB60     		str	r3, [r7, #12]
- 117              	.L3:
-  11:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(int i=0; i<obj->geo->numpoints; i++)
- 118              		.loc 1 11 0 is_stmt 0 discriminator 1
- 119 0068 7B68     		ldr	r3, [r7, #4]
- 120 006a 1B68     		ldr	r3, [r3]
- 121 006c 1A68     		ldr	r2, [r3]
- 122 006e FB68     		ldr	r3, [r7, #12]
- 123 0070 9A42     		cmp	r2, r3
- 124 0072 DCDC     		bgt	.L4
- 125              	.LBE2:
-  14:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	}
-  15:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** }
- 126              		.loc 1 15 0 is_stmt 1
- 127 0074 C046     		nop
- 128 0076 BD46     		mov	sp, r7
- 129 0078 04B0     		add	sp, sp, #16
- 130              		@ sp needed
- 131 007a 80BD     		pop	{r7, pc}
- 132              		.cfi_endproc
- 133              	.LFE1:
- 135              		.align	2
- 136              		.global	clear_object
- 137              		.code	16
- 138              		.thumb_func
- 140              	clear_object:
- 141              	.LFB2:
-  16:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 
-  17:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** void clear_object(POBJECT obj)
-  18:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** {
- 142              		.loc 1 18 0
- 143              		.cfi_startproc
- 144              		@ args = 0, pretend = 0, frame = 16
- 145              		@ frame_needed = 1, uses_anonymous_args = 0
- 146 007c 80B5     		push	{r7, lr}
- 147              		.cfi_def_cfa_offset 8
- 148              		.cfi_offset 7, -8
- 149              		.cfi_offset 14, -4
- 150 007e 84B0     		sub	sp, sp, #16
- 151              		.cfi_def_cfa_offset 24
- 152 0080 00AF     		add	r7, sp, #0
- 153              		.cfi_def_cfa_register 7
- 154 0082 7860     		str	r0, [r7, #4]
- 155              	.LBB4:
-  19:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(unsigned char i=0; i<obj->geo->numpoints; i++)
- 156              		.loc 1 19 0
- 157 0084 0F23     		movs	r3, #15
- 158 0086 FB18     		adds	r3, r7, r3
- 159 0088 0022     		movs	r2, #0
- 160 008a 1A70     		strb	r2, [r3]
- 161 008c 24E0     		b	.L6
- 162              	.L7:
- 163              	.LBB5:
-  20:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	{
-  21:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 		pixel(obj->posx + obj->geo->px[i].x, obj->posy + obj->geo->px[i].y, 0);
- 164              		.loc 1 21 0 discriminator 3
- 165 008e 7B68     		ldr	r3, [r7, #4]
- 166 0090 DA68     		ldr	r2, [r3, #12]
- 167 0092 7B68     		ldr	r3, [r7, #4]
- 168 0094 1968     		ldr	r1, [r3]
- 169 0096 0F23     		movs	r3, #15
- 170 0098 FB18     		adds	r3, r7, r3
- 171 009a 1B78     		ldrb	r3, [r3]
- 172 009c 0433     		adds	r3, r3, #4
- 173 009e 5B00     		lsls	r3, r3, #1
- 174 00a0 CB18     		adds	r3, r1, r3
- 175 00a2 0433     		adds	r3, r3, #4
- 176 00a4 1B78     		ldrb	r3, [r3]
- 177 00a6 D018     		adds	r0, r2, r3
- 178 00a8 7B68     		ldr	r3, [r7, #4]
- 179 00aa 1A69     		ldr	r2, [r3, #16]
- 180 00ac 7B68     		ldr	r3, [r7, #4]
- 181 00ae 1968     		ldr	r1, [r3]
- 182 00b0 0F23     		movs	r3, #15
- 183 00b2 FB18     		adds	r3, r7, r3
- 184 00b4 1B78     		ldrb	r3, [r3]
- 185 00b6 0433     		adds	r3, r3, #4
- 186 00b8 5B00     		lsls	r3, r3, #1
- 187 00ba CB18     		adds	r3, r1, r3
- 188 00bc 0533     		adds	r3, r3, #5
- 189 00be 1B78     		ldrb	r3, [r3]
- 190 00c0 D318     		adds	r3, r2, r3
- 191 00c2 0022     		movs	r2, #0
- 192 00c4 1900     		movs	r1, r3
- 193 00c6 FFF7FEFF 		bl	pixel
- 194              	.LBE5:
-  19:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(unsigned char i=0; i<obj->geo->numpoints; i++)
- 195              		.loc 1 19 0 discriminator 3
- 196 00ca 0F23     		movs	r3, #15
- 197 00cc FB18     		adds	r3, r7, r3
- 198 00ce 1A78     		ldrb	r2, [r3]
- 199 00d0 0F23     		movs	r3, #15
- 200 00d2 FB18     		adds	r3, r7, r3
- 201 00d4 0132     		adds	r2, r2, #1
- 202 00d6 1A70     		strb	r2, [r3]
- 203              	.L6:
-  19:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	for(unsigned char i=0; i<obj->geo->numpoints; i++)
- 204              		.loc 1 19 0 is_stmt 0 discriminator 1
- 205 00d8 0F23     		movs	r3, #15
- 206 00da FB18     		adds	r3, r7, r3
- 207 00dc 1A78     		ldrb	r2, [r3]
- 208 00de 7B68     		ldr	r3, [r7, #4]
- 209 00e0 1B68     		ldr	r3, [r3]
- 210 00e2 1B68     		ldr	r3, [r3]
- 211 00e4 9A42     		cmp	r2, r3
- 212 00e6 D2DB     		blt	.L7
- 213              	.LBE4:
-  22:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	}
-  23:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** }
- 214              		.loc 1 23 0 is_stmt 1
- 215 00e8 C046     		nop
- 216 00ea BD46     		mov	sp, r7
- 217 00ec 04B0     		add	sp, sp, #16
- 218              		@ sp needed
- 219 00ee 80BD     		pop	{r7, pc}
- 220              		.cfi_endproc
- 221              	.LFE2:
- 223              		.align	2
- 224              		.global	move_object
- 225              		.code	16
- 226              		.thumb_func
- 228              	move_object:
- 229              	.LFB3:
-  24:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 
-  25:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** void move_object(POBJECT obj)
-  26:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** {
- 230              		.loc 1 26 0
- 231              		.cfi_startproc
- 232              		@ args = 0, pretend = 0, frame = 8
- 233              		@ frame_needed = 1, uses_anonymous_args = 0
- 234 00f0 80B5     		push	{r7, lr}
- 235              		.cfi_def_cfa_offset 8
- 236              		.cfi_offset 7, -8
- 237              		.cfi_offset 14, -4
- 238 00f2 82B0     		sub	sp, sp, #8
- 239              		.cfi_def_cfa_offset 16
- 240 00f4 00AF     		add	r7, sp, #0
- 241              		.cfi_def_cfa_register 7
- 242 00f6 7860     		str	r0, [r7, #4]
-  27:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	clear_object(obj);
- 243              		.loc 1 27 0
- 244 00f8 7B68     		ldr	r3, [r7, #4]
- 245 00fa 1800     		movs	r0, r3
- 246 00fc FFF7FEFF 		bl	clear_object
-  28:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	obj->posx = obj->posx + obj->dirx;
- 247              		.loc 1 28 0
- 248 0100 7B68     		ldr	r3, [r7, #4]
- 249 0102 DA68     		ldr	r2, [r3, #12]
- 250 0104 7B68     		ldr	r3, [r7, #4]
- 251 0106 5B68     		ldr	r3, [r3, #4]
- 252 0108 D218     		adds	r2, r2, r3
- 253 010a 7B68     		ldr	r3, [r7, #4]
- 254 010c DA60     		str	r2, [r3, #12]
-  29:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	obj->posy = obj->posy + obj->diry;
- 255              		.loc 1 29 0
- 256 010e 7B68     		ldr	r3, [r7, #4]
- 257 0110 1A69     		ldr	r2, [r3, #16]
- 258 0112 7B68     		ldr	r3, [r7, #4]
- 259 0114 9B68     		ldr	r3, [r3, #8]
- 260 0116 D218     		adds	r2, r2, r3
- 261 0118 7B68     		ldr	r3, [r7, #4]
- 262 011a 1A61     		str	r2, [r3, #16]
-  30:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	if(obj->posx<1 || obj->posx>128-(obj->geo->sizex)) //Betyder att x är påväg över kanten, vänd
- 263              		.loc 1 30 0
- 264 011c 7B68     		ldr	r3, [r7, #4]
- 265 011e DB68     		ldr	r3, [r3, #12]
- 266 0120 002B     		cmp	r3, #0
- 267 0122 08DD     		ble	.L9
- 268              		.loc 1 30 0 is_stmt 0 discriminator 1
- 269 0124 7B68     		ldr	r3, [r7, #4]
- 270 0126 DA68     		ldr	r2, [r3, #12]
- 271 0128 7B68     		ldr	r3, [r7, #4]
- 272 012a 1B68     		ldr	r3, [r3]
- 273 012c 5B68     		ldr	r3, [r3, #4]
- 274 012e 8021     		movs	r1, #128
- 275 0130 CB1A     		subs	r3, r1, r3
- 276 0132 9A42     		cmp	r2, r3
- 277 0134 04DD     		ble	.L10
- 278              	.L9:
-  31:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	{
-  32:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 		obj->dirx = obj->dirx * (-1);
- 279              		.loc 1 32 0 is_stmt 1
- 280 0136 7B68     		ldr	r3, [r7, #4]
- 281 0138 5B68     		ldr	r3, [r3, #4]
- 282 013a 5A42     		rsbs	r2, r3, #0
- 283 013c 7B68     		ldr	r3, [r7, #4]
- 284 013e 5A60     		str	r2, [r3, #4]
- 285              	.L10:
-  33:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	}
-  34:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	if(obj->posy<1 || obj->posy>(64-obj->geo->sizey)) //Betyder att x är påväg över kanten, vänd 
- 286              		.loc 1 34 0
- 287 0140 7B68     		ldr	r3, [r7, #4]
- 288 0142 1B69     		ldr	r3, [r3, #16]
- 289 0144 002B     		cmp	r3, #0
- 290 0146 08DD     		ble	.L11
- 291              		.loc 1 34 0 is_stmt 0 discriminator 1
- 292 0148 7B68     		ldr	r3, [r7, #4]
- 293 014a 1A69     		ldr	r2, [r3, #16]
- 294 014c 7B68     		ldr	r3, [r7, #4]
- 295 014e 1B68     		ldr	r3, [r3]
- 296 0150 9B68     		ldr	r3, [r3, #8]
- 297 0152 4021     		movs	r1, #64
- 298 0154 CB1A     		subs	r3, r1, r3
- 299 0156 9A42     		cmp	r2, r3
- 300 0158 04DD     		ble	.L12
- 301              	.L11:
-  35:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	{
-  36:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 		obj->diry = obj->diry * (-1);
- 302              		.loc 1 36 0 is_stmt 1
- 303 015a 7B68     		ldr	r3, [r7, #4]
- 304 015c 9B68     		ldr	r3, [r3, #8]
- 305 015e 5A42     		rsbs	r2, r3, #0
- 306 0160 7B68     		ldr	r3, [r7, #4]
- 307 0162 9A60     		str	r2, [r3, #8]
- 308              	.L12:
-  37:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	}
-  38:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** 	draw_object(obj);
- 309              		.loc 1 38 0
- 310 0164 7B68     		ldr	r3, [r7, #4]
- 311 0166 1800     		movs	r0, r3
- 312 0168 FFF7FEFF 		bl	draw_object
-  39:/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.c **** }...
- 313              		.loc 1 39 0
- 314 016c C046     		nop
- 315 016e BD46     		mov	sp, r7
- 316 0170 02B0     		add	sp, sp, #8
- 317              		@ sp needed
- 318 0172 80BD     		pop	{r7, pc}
- 319              		.cfi_endproc
- 320              	.LFE3:
- 322              	.Letext0:
- 323              		.file 2 "/Users/se/Documents/Chalmers/mop/Moplaborationer/pong/objects.h"
+  19              		.section	.start_section,"ax",%progbits
+  20              		.align	2
+  21              		.global	startup
+  22              		.code	16
+  23              		.thumb_func
+  25              	startup:
+  26              	.LFB0:
+  27              		.file 1 "C:/Users/Maija/Documents/mop/pong/startup.c"
+   1:C:/Users/Maija/Documents/mop/pong\startup.c **** #include "delay.h"
+   2:C:/Users/Maija/Documents/mop/pong\startup.c **** #include "asciidisplay.h"
+   3:C:/Users/Maija/Documents/mop/pong\startup.c **** #include "ports.h"
+   4:C:/Users/Maija/Documents/mop/pong\startup.c **** #include "objects.h"
+   5:C:/Users/Maija/Documents/mop/pong\startup.c ****  
+   6:C:/Users/Maija/Documents/mop/pong\startup.c ****  
+   7:C:/Users/Maija/Documents/mop/pong\startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+   8:C:/Users/Maija/Documents/mop/pong\startup.c **** 
+   9:C:/Users/Maija/Documents/mop/pong\startup.c **** void startup ( void )
+  10:C:/Users/Maija/Documents/mop/pong\startup.c **** {
+  28              		.loc 1 10 0
+  29              		.cfi_startproc
+  11:C:/Users/Maija/Documents/mop/pong\startup.c **** asm volatile(
+  30              		.loc 1 11 0
+  31              		.syntax divided
+  32              	@ 11 "C:/Users/Maija/Documents/mop/pong/startup.c" 1
+  33 0000 0248     		 LDR R0,=0x2001C000
+  34 0002 8546     	 MOV SP,R0
+  35 0004 FFF7FEFF 	 BL main
+  36 0008 FEE7     	.L1: B .L1
+  37              	
+  38              	@ 0 "" 2
+  12:C:/Users/Maija/Documents/mop/pong\startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  13:C:/Users/Maija/Documents/mop/pong\startup.c **** 	" MOV SP,R0\n"
+  14:C:/Users/Maija/Documents/mop/pong\startup.c **** 	" BL main\n"				/* call main */
+  15:C:/Users/Maija/Documents/mop/pong\startup.c **** 	".L1: B .L1\n"				/* never return */
+  16:C:/Users/Maija/Documents/mop/pong\startup.c **** 	) ;
+  17:C:/Users/Maija/Documents/mop/pong\startup.c **** }
+  39              		.loc 1 17 0
+  40              		.thumb
+  41              		.syntax unified
+  42 000a C046     		nop
+  43              		.cfi_endproc
+  44              	.LFE0:
+  46              		.section	.rodata
+  47              		.align	2
+  48              	.LC0:
+  49 0000 506C6179 		.ascii	"Player 1:  \000"
+  49      65722031 
+  49      3A202000 
+  50              		.align	2
+  51              	.LC2:
+  52 000c 506C6179 		.ascii	"Player 2:  \000"
+  52      65722032 
+  52      3A202000 
+  53              		.text
+  54              		.align	2
+  55              		.global	write_to_ascii
+  56              		.code	16
+  57              		.thumb_func
+  59              	write_to_ascii:
+  60              	.LFB1:
+  18:C:/Users/Maija/Documents/mop/pong\startup.c **** 
+  19:C:/Users/Maija/Documents/mop/pong\startup.c **** void write_to_ascii(unsigned char i){
+  61              		.loc 1 19 0
+  62              		.cfi_startproc
+  63 0000 90B5     		push	{r4, r7, lr}
+  64              		.cfi_def_cfa_offset 12
+  65              		.cfi_offset 4, -12
+  66              		.cfi_offset 7, -8
+  67              		.cfi_offset 14, -4
+  68 0002 8BB0     		sub	sp, sp, #44
+  69              		.cfi_def_cfa_offset 56
+  70 0004 00AF     		add	r7, sp, #0
+  71              		.cfi_def_cfa_register 7
+  72 0006 0200     		movs	r2, r0
+  73 0008 FB1D     		adds	r3, r7, #7
+  74 000a 1A70     		strb	r2, [r3]
+  20:C:/Users/Maija/Documents/mop/pong\startup.c **** 	char *s;
+  21:C:/Users/Maija/Documents/mop/pong\startup.c **** 	char test1[12] = "Player 1:  ";
+  75              		.loc 1 21 0
+  76 000c 1823     		movs	r3, #24
+  77 000e FB18     		adds	r3, r7, r3
+  78 0010 234A     		ldr	r2, .L7
+  79 0012 13CA     		ldmia	r2!, {r0, r1, r4}
+  80 0014 13C3     		stmia	r3!, {r0, r1, r4}
+  22:C:/Users/Maija/Documents/mop/pong\startup.c **** 	char test2[12] = "Player 2:  ";
+  81              		.loc 1 22 0
+  82 0016 0C23     		movs	r3, #12
+  83 0018 FB18     		adds	r3, r7, r3
+  84 001a 224A     		ldr	r2, .L7+4
+  85 001c 13CA     		ldmia	r2!, {r0, r1, r4}
+  86 001e 13C3     		stmia	r3!, {r0, r1, r4}
+  23:C:/Users/Maija/Documents/mop/pong\startup.c **** 	test1[10] = '0'+i; 
+  87              		.loc 1 23 0
+  88 0020 FB1D     		adds	r3, r7, #7
+  89 0022 1B78     		ldrb	r3, [r3]
+  90 0024 3033     		adds	r3, r3, #48
+  91 0026 DAB2     		uxtb	r2, r3
+  92 0028 1823     		movs	r3, #24
+  93 002a FB18     		adds	r3, r7, r3
+  94 002c 9A72     		strb	r2, [r3, #10]
+  24:C:/Users/Maija/Documents/mop/pong\startup.c **** 	test2[10] = '0'+i; 
+  95              		.loc 1 24 0
+  96 002e FB1D     		adds	r3, r7, #7
+  97 0030 1B78     		ldrb	r3, [r3]
+  98 0032 3033     		adds	r3, r3, #48
+  99 0034 DAB2     		uxtb	r2, r3
+ 100 0036 0C23     		movs	r3, #12
+ 101 0038 FB18     		adds	r3, r7, r3
+ 102 003a 9A72     		strb	r2, [r3, #10]
+  25:C:/Users/Maija/Documents/mop/pong\startup.c **** 	
+  26:C:/Users/Maija/Documents/mop/pong\startup.c **** 	init_ascii_ports();
+ 103              		.loc 1 26 0
+ 104 003c FFF7FEFF 		bl	init_ascii_ports
+  27:C:/Users/Maija/Documents/mop/pong\startup.c **** 	ascii_init();
+ 105              		.loc 1 27 0
+ 106 0040 FFF7FEFF 		bl	ascii_init
+  28:C:/Users/Maija/Documents/mop/pong\startup.c **** 	
+  29:C:/Users/Maija/Documents/mop/pong\startup.c **** 	ascii_gotoxy(1,1);
+ 107              		.loc 1 29 0
+ 108 0044 0121     		movs	r1, #1
+ 109 0046 0120     		movs	r0, #1
+ 110 0048 FFF7FEFF 		bl	ascii_gotoxy
+  30:C:/Users/Maija/Documents/mop/pong\startup.c **** 	s = test1;
+ 111              		.loc 1 30 0
+ 112 004c 1823     		movs	r3, #24
+ 113 004e FB18     		adds	r3, r7, r3
+ 114 0050 7B62     		str	r3, [r7, #36]
+  31:C:/Users/Maija/Documents/mop/pong\startup.c **** 	while(*s)
+ 115              		.loc 1 31 0
+ 116 0052 06E0     		b	.L3
+ 117              	.L4:
+ 118              	.LBB2:
+  32:C:/Users/Maija/Documents/mop/pong\startup.c **** 	{
+  33:C:/Users/Maija/Documents/mop/pong\startup.c **** 		ascii_write_char( *s++);
+ 119              		.loc 1 33 0
+ 120 0054 7B6A     		ldr	r3, [r7, #36]
+ 121 0056 5A1C     		adds	r2, r3, #1
+ 122 0058 7A62     		str	r2, [r7, #36]
+ 123 005a 1B78     		ldrb	r3, [r3]
+ 124 005c 1800     		movs	r0, r3
+ 125 005e FFF7FEFF 		bl	ascii_write_char
+ 126              	.L3:
+ 127              	.LBE2:
+  31:C:/Users/Maija/Documents/mop/pong\startup.c **** 	while(*s)
+ 128              		.loc 1 31 0
+ 129 0062 7B6A     		ldr	r3, [r7, #36]
+ 130 0064 1B78     		ldrb	r3, [r3]
+ 131 0066 002B     		cmp	r3, #0
+ 132 0068 F4D1     		bne	.L4
+  34:C:/Users/Maija/Documents/mop/pong\startup.c **** 	}
+  35:C:/Users/Maija/Documents/mop/pong\startup.c **** 	ascii_gotoxy(1,2);
+ 133              		.loc 1 35 0
+ 134 006a 0221     		movs	r1, #2
+ 135 006c 0120     		movs	r0, #1
+ 136 006e FFF7FEFF 		bl	ascii_gotoxy
+  36:C:/Users/Maija/Documents/mop/pong\startup.c **** 	s = test2;
+ 137              		.loc 1 36 0
+ 138 0072 0C23     		movs	r3, #12
+ 139 0074 FB18     		adds	r3, r7, r3
+ 140 0076 7B62     		str	r3, [r7, #36]
+  37:C:/Users/Maija/Documents/mop/pong\startup.c **** 	while(*s)
+ 141              		.loc 1 37 0
+ 142 0078 06E0     		b	.L5
+ 143              	.L6:
+ 144              	.LBB3:
+  38:C:/Users/Maija/Documents/mop/pong\startup.c **** 	{
+  39:C:/Users/Maija/Documents/mop/pong\startup.c **** 		ascii_write_char(*s++);
+ 145              		.loc 1 39 0
+ 146 007a 7B6A     		ldr	r3, [r7, #36]
+ 147 007c 5A1C     		adds	r2, r3, #1
+ 148 007e 7A62     		str	r2, [r7, #36]
+ 149 0080 1B78     		ldrb	r3, [r3]
+ 150 0082 1800     		movs	r0, r3
+ 151 0084 FFF7FEFF 		bl	ascii_write_char
+ 152              	.L5:
+ 153              	.LBE3:
+  37:C:/Users/Maija/Documents/mop/pong\startup.c **** 	while(*s)
+ 154              		.loc 1 37 0
+ 155 0088 7B6A     		ldr	r3, [r7, #36]
+ 156 008a 1B78     		ldrb	r3, [r3]
+ 157 008c 002B     		cmp	r3, #0
+ 158 008e F4D1     		bne	.L6
+  40:C:/Users/Maija/Documents/mop/pong\startup.c **** 	}
+  41:C:/Users/Maija/Documents/mop/pong\startup.c **** 	
+  42:C:/Users/Maija/Documents/mop/pong\startup.c **** 	//meddelandet utskrivet, gör grafisk display primär igen
+  43:C:/Users/Maija/Documents/mop/pong\startup.c **** 	init_graphic_port();
+ 159              		.loc 1 43 0
+ 160 0090 FFF7FEFF 		bl	init_graphic_port
+  44:C:/Users/Maija/Documents/mop/pong\startup.c **** 	graphic_initialize();
+ 161              		.loc 1 44 0
+ 162 0094 FFF7FEFF 		bl	graphic_initialize
+  45:C:/Users/Maija/Documents/mop/pong\startup.c **** }
+ 163              		.loc 1 45 0
+ 164 0098 C046     		nop
+ 165 009a BD46     		mov	sp, r7
+ 166 009c 0BB0     		add	sp, sp, #44
+ 167              		@ sp needed
+ 168 009e 90BD     		pop	{r4, r7, pc}
+ 169              	.L8:
+ 170              		.align	2
+ 171              	.L7:
+ 172 00a0 00000000 		.word	.LC0
+ 173 00a4 0C000000 		.word	.LC2
+ 174              		.cfi_endproc
+ 175              	.LFE1:
+ 177              		.global	__aeabi_uidivmod
+ 178              		.align	2
+ 179              		.global	main
+ 180              		.code	16
+ 181              		.thumb_func
+ 183              	main:
+ 184              	.LFB2:
+  46:C:/Users/Maija/Documents/mop/pong\startup.c **** 
+  47:C:/Users/Maija/Documents/mop/pong\startup.c **** void main(void)
+  48:C:/Users/Maija/Documents/mop/pong\startup.c **** {
+ 185              		.loc 1 48 0
+ 186              		.cfi_startproc
+ 187 00a8 80B5     		push	{r7, lr}
+ 188              		.cfi_def_cfa_offset 8
+ 189              		.cfi_offset 7, -8
+ 190              		.cfi_offset 14, -4
+ 191 00aa 82B0     		sub	sp, sp, #8
+ 192              		.cfi_def_cfa_offset 16
+ 193 00ac 00AF     		add	r7, sp, #0
+ 194              		.cfi_def_cfa_register 7
+  49:C:/Users/Maija/Documents/mop/pong\startup.c **** 	
+  50:C:/Users/Maija/Documents/mop/pong\startup.c **** 	static GEOMETRY ball_geometry={
+  51:C:/Users/Maija/Documents/mop/pong\startup.c **** 		12, //numpoints
+  52:C:/Users/Maija/Documents/mop/pong\startup.c **** 		4,4, //sixex, sixey
+  53:C:/Users/Maija/Documents/mop/pong\startup.c **** 		{
+  54:C:/Users/Maija/Documents/mop/pong\startup.c **** 			//px[0,1,2...]
+  55:C:/Users/Maija/Documents/mop/pong\startup.c **** 			{0,1},{0,2},{1,0},{1,1},
+  56:C:/Users/Maija/Documents/mop/pong\startup.c **** 			{1,2},{1,3},{2,0},{2,1},
+  57:C:/Users/Maija/Documents/mop/pong\startup.c **** 			{2,2},{2,3},{3,1},{3,2},
+  58:C:/Users/Maija/Documents/mop/pong\startup.c **** 		}
+  59:C:/Users/Maija/Documents/mop/pong\startup.c **** 	};
+  60:C:/Users/Maija/Documents/mop/pong\startup.c **** 	static OBJECT ball= {
+  61:C:/Users/Maija/Documents/mop/pong\startup.c **** 		&ball_geometry,
+  62:C:/Users/Maija/Documents/mop/pong\startup.c **** 		0,0, //initiala riktningpositioner
+  63:C:/Users/Maija/Documents/mop/pong\startup.c **** 		1,1, //initiala startpositioner
+  64:C:/Users/Maija/Documents/mop/pong\startup.c **** 		draw_object,
+  65:C:/Users/Maija/Documents/mop/pong\startup.c **** 		clear_object,
+  66:C:/Users/Maija/Documents/mop/pong\startup.c **** 		move_object,
+  67:C:/Users/Maija/Documents/mop/pong\startup.c **** 		set_object_speed
+  68:C:/Users/Maija/Documents/mop/pong\startup.c **** 	};
+  69:C:/Users/Maija/Documents/mop/pong\startup.c **** 	POBJECT pball= &ball;
+ 195              		.loc 1 69 0
+ 196 00ae 114B     		ldr	r3, .L12
+ 197 00b0 3B60     		str	r3, [r7]
+  70:C:/Users/Maija/Documents/mop/pong\startup.c **** 	init_graphic_port();
+ 198              		.loc 1 70 0
+ 199 00b2 FFF7FEFF 		bl	init_graphic_port
+  71:C:/Users/Maija/Documents/mop/pong\startup.c **** 	graphic_initialize();
+ 200              		.loc 1 71 0
+ 201 00b6 FFF7FEFF 		bl	graphic_initialize
+  72:C:/Users/Maija/Documents/mop/pong\startup.c **** 	#ifndef SIMULATOR
+  73:C:/Users/Maija/Documents/mop/pong\startup.c **** 		graphic_clear_screen();
+  74:C:/Users/Maija/Documents/mop/pong\startup.c **** 	#endif
+  75:C:/Users/Maija/Documents/mop/pong\startup.c **** 	pball->set_speed(pball,4,4);
+ 202              		.loc 1 75 0
+ 203 00ba 3B68     		ldr	r3, [r7]
+ 204 00bc 1B6A     		ldr	r3, [r3, #32]
+ 205 00be 3868     		ldr	r0, [r7]
+ 206 00c0 0422     		movs	r2, #4
+ 207 00c2 0421     		movs	r1, #4
+ 208 00c4 9847     		blx	r3
+  76:C:/Users/Maija/Documents/mop/pong\startup.c **** 	
+  77:C:/Users/Maija/Documents/mop/pong\startup.c **** 	unsigned ascii_loop=0;
+ 209              		.loc 1 77 0
+ 210 00c6 0023     		movs	r3, #0
+ 211 00c8 7B60     		str	r3, [r7, #4]
+ 212              	.L11:
+  78:C:/Users/Maija/Documents/mop/pong\startup.c **** 	while(1){
+  79:C:/Users/Maija/Documents/mop/pong\startup.c **** 		pball->move(pball);
+ 213              		.loc 1 79 0
+ 214 00ca 3B68     		ldr	r3, [r7]
+ 215 00cc DB69     		ldr	r3, [r3, #28]
+ 216 00ce 3A68     		ldr	r2, [r7]
+ 217 00d0 1000     		movs	r0, r2
+ 218 00d2 9847     		blx	r3
+  80:C:/Users/Maija/Documents/mop/pong\startup.c **** 		//delay_milli(40);
+  81:C:/Users/Maija/Documents/mop/pong\startup.c **** 		if((ascii_loop%5)==0){
+ 219              		.loc 1 81 0
+ 220 00d4 7B68     		ldr	r3, [r7, #4]
+ 221 00d6 0521     		movs	r1, #5
+ 222 00d8 1800     		movs	r0, r3
+ 223 00da FFF7FEFF 		bl	__aeabi_uidivmod
+ 224 00de 0B1E     		subs	r3, r1, #0
+ 225 00e0 04D1     		bne	.L10
+  82:C:/Users/Maija/Documents/mop/pong\startup.c **** 			write_to_ascii(ascii_loop);
+ 226              		.loc 1 82 0
+ 227 00e2 7B68     		ldr	r3, [r7, #4]
+ 228 00e4 DBB2     		uxtb	r3, r3
+ 229 00e6 1800     		movs	r0, r3
+ 230 00e8 FFF7FEFF 		bl	write_to_ascii
+ 231              	.L10:
+  83:C:/Users/Maija/Documents/mop/pong\startup.c **** 		}
+  84:C:/Users/Maija/Documents/mop/pong\startup.c **** 		ascii_loop++;
+ 232              		.loc 1 84 0
+ 233 00ec 7B68     		ldr	r3, [r7, #4]
+ 234 00ee 0133     		adds	r3, r3, #1
+ 235 00f0 7B60     		str	r3, [r7, #4]
+  85:C:/Users/Maija/Documents/mop/pong\startup.c **** 	}
+ 236              		.loc 1 85 0
+ 237 00f2 EAE7     		b	.L11
+ 238              	.L13:
+ 239              		.align	2
+ 240              	.L12:
+ 241 00f4 00000000 		.word	ball.4244
+ 242              		.cfi_endproc
+ 243              	.LFE2:
+ 245              		.data
+ 246              		.align	2
+ 249              	ball.4244:
+ 250 0000 24000000 		.word	ball_geometry.4243
+ 251 0004 00000000 		.word	0
+ 252 0008 00000000 		.word	0
+ 253 000c 01000000 		.word	1
+ 254 0010 01000000 		.word	1
+ 255 0014 00000000 		.word	draw_object
+ 256 0018 00000000 		.word	clear_object
+ 257 001c 00000000 		.word	move_object
+ 258 0020 00000000 		.word	set_object_speed
+ 259              		.align	2
+ 262              	ball_geometry.4243:
+ 263 0024 0C000000 		.word	12
+ 264 0028 04000000 		.word	4
+ 265 002c 04000000 		.word	4
+ 266 0030 00       		.byte	0
+ 267 0031 01       		.byte	1
+ 268 0032 00       		.byte	0
+ 269 0033 02       		.byte	2
+ 270 0034 01       		.byte	1
+ 271 0035 00       		.byte	0
+ 272 0036 01       		.byte	1
+ 273 0037 01       		.byte	1
+ 274 0038 01       		.byte	1
+ 275 0039 02       		.byte	2
+ 276 003a 01       		.byte	1
+ 277 003b 03       		.byte	3
+ 278 003c 02       		.byte	2
+ 279 003d 00       		.byte	0
+ 280 003e 02       		.byte	2
+ 281 003f 01       		.byte	1
+ 282 0040 02       		.byte	2
+ 283 0041 02       		.byte	2
+ 284 0042 02       		.byte	2
+ 285 0043 03       		.byte	3
+ 286 0044 03       		.byte	3
+ 287 0045 01       		.byte	1
+ 288 0046 03       		.byte	3
+ 289 0047 02       		.byte	2
+ 290 0048 00000000 		.space	16
+ 290      00000000 
+ 290      00000000 
+ 290      00000000 
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "C:/Users/Maija/Documents/mop/pong/objects.h"
