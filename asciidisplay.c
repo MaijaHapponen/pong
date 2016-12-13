@@ -88,11 +88,17 @@ void ascii_command(unsigned char command, unsigned int delay_us)
 
 }
 
-void ascii_init(void){
+void ascii_init(void)
+{
 	ascii_command(0x38,39);
 	ascii_command(0xE,39);
 	ascii_command(1,2000);
 	ascii_command(4,39);
+}
+
+void init_asciidisplay(void)
+{
+	*GPIO_E_MODER = 0x55555555;
 }
 
 void ascii_gotoxy(unsigned char x, unsigned char y)
