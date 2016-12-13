@@ -10,6 +10,11 @@ void delay_250ns(void){
 	*STK_CTRL=0;
 }
 
+void delay_500ns(void){
+	delay_250ns();
+	delay_250ns();
+}
+
 void delay_mikro(unsigned int us){
 	
 	for(int i=0; i<us; i++){

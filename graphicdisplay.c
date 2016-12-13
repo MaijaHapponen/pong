@@ -10,8 +10,7 @@ void graphic_ctrl_bit_clear(uint8_t x){
 	*portOdrLow &= ( ~B_SELECT & ~x );
 }
 
-void select_controller(uint8_t controller)
-{
+void select_controller(uint8_t controller){
 	switch(controller){
 		case 0:
 			graphic_ctrl_bit_clear(B_CS1|B_CS2);

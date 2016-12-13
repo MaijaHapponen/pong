@@ -86,105 +86,135 @@
   76              		.cfi_endproc
   77              	.LFE0:
   79              		.align	2
-  80              		.global	delay_mikro
+  80              		.global	delay_500ns
   81              		.code	16
   82              		.thumb_func
-  84              	delay_mikro:
+  84              	delay_500ns:
   85              	.LFB1:
   12:C:/Users/Maija/Documents/mop/pong\delay.c **** 
-  13:C:/Users/Maija/Documents/mop/pong\delay.c **** void delay_mikro(unsigned int us){
+  13:C:/Users/Maija/Documents/mop/pong\delay.c **** void delay_500ns(void){
   86              		.loc 1 13 0
   87              		.cfi_startproc
   88 0044 80B5     		push	{r7, lr}
   89              		.cfi_def_cfa_offset 8
   90              		.cfi_offset 7, -8
   91              		.cfi_offset 14, -4
-  92 0046 84B0     		sub	sp, sp, #16
-  93              		.cfi_def_cfa_offset 24
-  94 0048 00AF     		add	r7, sp, #0
-  95              		.cfi_def_cfa_register 7
-  96 004a 7860     		str	r0, [r7, #4]
-  97              	.LBB2:
-  14:C:/Users/Maija/Documents/mop/pong\delay.c **** 	
-  15:C:/Users/Maija/Documents/mop/pong\delay.c **** 	for(int i=0; i<us; i++){
-  98              		.loc 1 15 0
-  99 004c 0023     		movs	r3, #0
- 100 004e FB60     		str	r3, [r7, #12]
- 101 0050 0AE0     		b	.L6
- 102              	.L7:
-  16:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 103              		.loc 1 16 0 discriminator 3
- 104 0052 FFF7FEFF 		bl	delay_250ns
-  17:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 105              		.loc 1 17 0 discriminator 3
- 106 0056 FFF7FEFF 		bl	delay_250ns
-  18:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 107              		.loc 1 18 0 discriminator 3
- 108 005a FFF7FEFF 		bl	delay_250ns
-  19:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 109              		.loc 1 19 0 discriminator 3
- 110 005e FFF7FEFF 		bl	delay_250ns
-  15:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 111              		.loc 1 15 0 discriminator 3
- 112 0062 FB68     		ldr	r3, [r7, #12]
- 113 0064 0133     		adds	r3, r3, #1
- 114 0066 FB60     		str	r3, [r7, #12]
- 115              	.L6:
-  15:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
- 116              		.loc 1 15 0 is_stmt 0 discriminator 1
- 117 0068 FA68     		ldr	r2, [r7, #12]
- 118 006a 7B68     		ldr	r3, [r7, #4]
- 119 006c 9A42     		cmp	r2, r3
- 120 006e F0D3     		bcc	.L7
- 121              	.LBE2:
-  20:C:/Users/Maija/Documents/mop/pong\delay.c **** 	}
-  21:C:/Users/Maija/Documents/mop/pong\delay.c **** 	
-  22:C:/Users/Maija/Documents/mop/pong\delay.c **** }
- 122              		.loc 1 22 0 is_stmt 1
- 123 0070 C046     		nop
- 124 0072 BD46     		mov	sp, r7
- 125 0074 04B0     		add	sp, sp, #16
- 126              		@ sp needed
- 127 0076 80BD     		pop	{r7, pc}
- 128              		.cfi_endproc
- 129              	.LFE1:
- 131              		.align	2
- 132              		.global	delay_milli
- 133              		.code	16
- 134              		.thumb_func
- 136              	delay_milli:
- 137              	.LFB2:
-  23:C:/Users/Maija/Documents/mop/pong\delay.c **** void delay_milli(unsigned int ms){
- 138              		.loc 1 23 0
- 139              		.cfi_startproc
- 140 0078 80B5     		push	{r7, lr}
- 141              		.cfi_def_cfa_offset 8
- 142              		.cfi_offset 7, -8
- 143              		.cfi_offset 14, -4
- 144 007a 82B0     		sub	sp, sp, #8
- 145              		.cfi_def_cfa_offset 16
- 146 007c 00AF     		add	r7, sp, #0
- 147              		.cfi_def_cfa_register 7
- 148 007e 7860     		str	r0, [r7, #4]
-  24:C:/Users/Maija/Documents/mop/pong\delay.c **** 	#ifdef SIMULATOR
-  25:C:/Users/Maija/Documents/mop/pong\delay.c **** 		ms= ms/1000;
-  26:C:/Users/Maija/Documents/mop/pong\delay.c **** 		ms++;
-  27:C:/Users/Maija/Documents/mop/pong\delay.c **** 	#endif
-  28:C:/Users/Maija/Documents/mop/pong\delay.c **** 	delay_mikro(ms*1000);
- 149              		.loc 1 28 0
- 150 0080 7B68     		ldr	r3, [r7, #4]
- 151 0082 FA22     		movs	r2, #250
- 152 0084 9200     		lsls	r2, r2, #2
- 153 0086 5343     		muls	r3, r2
- 154 0088 1800     		movs	r0, r3
- 155 008a FFF7FEFF 		bl	delay_mikro
-  29:C:/Users/Maija/Documents/mop/pong\delay.c **** }...
- 156              		.loc 1 29 0
- 157 008e C046     		nop
- 158 0090 BD46     		mov	sp, r7
- 159 0092 02B0     		add	sp, sp, #8
- 160              		@ sp needed
- 161 0094 80BD     		pop	{r7, pc}
- 162              		.cfi_endproc
- 163              	.LFE2:
- 165              	.Letext0:
+  92 0046 00AF     		add	r7, sp, #0
+  93              		.cfi_def_cfa_register 7
+  14:C:/Users/Maija/Documents/mop/pong\delay.c **** 	delay_250ns();
+  94              		.loc 1 14 0
+  95 0048 FFF7FEFF 		bl	delay_250ns
+  15:C:/Users/Maija/Documents/mop/pong\delay.c **** 	delay_250ns();
+  96              		.loc 1 15 0
+  97 004c FFF7FEFF 		bl	delay_250ns
+  16:C:/Users/Maija/Documents/mop/pong\delay.c **** }
+  98              		.loc 1 16 0
+  99 0050 C046     		nop
+ 100 0052 BD46     		mov	sp, r7
+ 101              		@ sp needed
+ 102 0054 80BD     		pop	{r7, pc}
+ 103              		.cfi_endproc
+ 104              	.LFE1:
+ 106 0056 C046     		.align	2
+ 107              		.global	delay_mikro
+ 108              		.code	16
+ 109              		.thumb_func
+ 111              	delay_mikro:
+ 112              	.LFB2:
+  17:C:/Users/Maija/Documents/mop/pong\delay.c **** 
+  18:C:/Users/Maija/Documents/mop/pong\delay.c **** void delay_mikro(unsigned int us){
+ 113              		.loc 1 18 0
+ 114              		.cfi_startproc
+ 115 0058 80B5     		push	{r7, lr}
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 7, -8
+ 118              		.cfi_offset 14, -4
+ 119 005a 84B0     		sub	sp, sp, #16
+ 120              		.cfi_def_cfa_offset 24
+ 121 005c 00AF     		add	r7, sp, #0
+ 122              		.cfi_def_cfa_register 7
+ 123 005e 7860     		str	r0, [r7, #4]
+ 124              	.LBB2:
+  19:C:/Users/Maija/Documents/mop/pong\delay.c **** 	
+  20:C:/Users/Maija/Documents/mop/pong\delay.c **** 	for(int i=0; i<us; i++){
+ 125              		.loc 1 20 0
+ 126 0060 0023     		movs	r3, #0
+ 127 0062 FB60     		str	r3, [r7, #12]
+ 128 0064 0AE0     		b	.L7
+ 129              	.L8:
+  21:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 130              		.loc 1 21 0 discriminator 3
+ 131 0066 FFF7FEFF 		bl	delay_250ns
+  22:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 132              		.loc 1 22 0 discriminator 3
+ 133 006a FFF7FEFF 		bl	delay_250ns
+  23:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 134              		.loc 1 23 0 discriminator 3
+ 135 006e FFF7FEFF 		bl	delay_250ns
+  24:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 136              		.loc 1 24 0 discriminator 3
+ 137 0072 FFF7FEFF 		bl	delay_250ns
+  20:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 138              		.loc 1 20 0 discriminator 3
+ 139 0076 FB68     		ldr	r3, [r7, #12]
+ 140 0078 0133     		adds	r3, r3, #1
+ 141 007a FB60     		str	r3, [r7, #12]
+ 142              	.L7:
+  20:C:/Users/Maija/Documents/mop/pong\delay.c **** 		delay_250ns();
+ 143              		.loc 1 20 0 is_stmt 0 discriminator 1
+ 144 007c FA68     		ldr	r2, [r7, #12]
+ 145 007e 7B68     		ldr	r3, [r7, #4]
+ 146 0080 9A42     		cmp	r2, r3
+ 147 0082 F0D3     		bcc	.L8
+ 148              	.LBE2:
+  25:C:/Users/Maija/Documents/mop/pong\delay.c **** 	}
+  26:C:/Users/Maija/Documents/mop/pong\delay.c **** 	
+  27:C:/Users/Maija/Documents/mop/pong\delay.c **** }
+ 149              		.loc 1 27 0 is_stmt 1
+ 150 0084 C046     		nop
+ 151 0086 BD46     		mov	sp, r7
+ 152 0088 04B0     		add	sp, sp, #16
+ 153              		@ sp needed
+ 154 008a 80BD     		pop	{r7, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE2:
+ 158              		.align	2
+ 159              		.global	delay_milli
+ 160              		.code	16
+ 161              		.thumb_func
+ 163              	delay_milli:
+ 164              	.LFB3:
+  28:C:/Users/Maija/Documents/mop/pong\delay.c **** void delay_milli(unsigned int ms){
+ 165              		.loc 1 28 0
+ 166              		.cfi_startproc
+ 167 008c 80B5     		push	{r7, lr}
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 7, -8
+ 170              		.cfi_offset 14, -4
+ 171 008e 82B0     		sub	sp, sp, #8
+ 172              		.cfi_def_cfa_offset 16
+ 173 0090 00AF     		add	r7, sp, #0
+ 174              		.cfi_def_cfa_register 7
+ 175 0092 7860     		str	r0, [r7, #4]
+  29:C:/Users/Maija/Documents/mop/pong\delay.c **** 	#ifdef SIMULATOR
+  30:C:/Users/Maija/Documents/mop/pong\delay.c **** 		ms= ms/1000;
+  31:C:/Users/Maija/Documents/mop/pong\delay.c **** 		ms++;
+  32:C:/Users/Maija/Documents/mop/pong\delay.c **** 	#endif
+  33:C:/Users/Maija/Documents/mop/pong\delay.c **** 	delay_mikro(ms*1000);
+ 176              		.loc 1 33 0
+ 177 0094 7B68     		ldr	r3, [r7, #4]
+ 178 0096 FA22     		movs	r2, #250
+ 179 0098 9200     		lsls	r2, r2, #2
+ 180 009a 5343     		muls	r3, r2
+ 181 009c 1800     		movs	r0, r3
+ 182 009e FFF7FEFF 		bl	delay_mikro
+  34:C:/Users/Maija/Documents/mop/pong\delay.c **** }...
+ 183              		.loc 1 34 0
+ 184 00a2 C046     		nop
+ 185 00a4 BD46     		mov	sp, r7
+ 186 00a6 02B0     		add	sp, sp, #8
+ 187              		@ sp needed
+ 188 00a8 80BD     		pop	{r7, pc}
+ 189              		.cfi_endproc
+ 190              	.LFE3:
+ 192              	.Letext0:

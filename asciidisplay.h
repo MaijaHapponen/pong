@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "ports.h"
+#include "delay.h"
 
 void ascii_ctrl_bit_set(unsigned char x);
 void ascii_ctrl_bit_clear(unsigned char x);

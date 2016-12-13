@@ -3,6 +3,10 @@
 
 #include "types.h"
 #include "ports.h"
+#include "delay.h"
+
+typedef unsigned char uint8_t;
+
 void graphic_ctrl_bit_set(uint8_t x);
 void graphic_ctrl_bit_clear(uint8_t x);
 
