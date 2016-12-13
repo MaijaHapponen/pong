@@ -120,6 +120,8 @@ monitor restart</PostConnectCommands>
   <VirtualDirectory Name="src">
     <File Name="startup.c"/>
     <File Name="delay.c"/>
+    <File Name="graphicdisplay.c"/>
+    <File Name="asciidisplay.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
@@ -128,5 +130,7 @@ monitor restart</PostConnectCommands>
     <File Name="delay.h"/>
     <File Name="types.h"/>
     <File Name="ports.h"/>
+    <File Name="graphicdisplay.h"/>
+    <File Name="asciidisplay.h"/>
   </VirtualDirectory>
 </CodeLite_Project>
