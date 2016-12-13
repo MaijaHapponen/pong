@@ -1,7 +1,6 @@
-/*
- * 	startup.c
- *
- */
+#include "delay.h"
+ 
+ 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
 void startup ( void )

@@ -119,8 +119,12 @@ monitor restart</PostConnectCommands>
   </Settings>
   <VirtualDirectory Name="src">
     <File Name="startup.c"/>
+    <File Name="delay.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="delay.h"/>
   </VirtualDirectory>
 </CodeLite_Project>
