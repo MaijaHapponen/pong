@@ -130,7 +130,7 @@ monitor restart</PostConnectCommands>
     <File Name="delay.h"/>
     <File Name="types.h"/>
     <File Name="ports.h"/>
-    <File Name="graphicdisplay.h"/>
     <File Name="asciidisplay.h"/>
+    <File Name="graphicdisplay.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

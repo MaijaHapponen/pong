@@ -7,6 +7,8 @@
 
 typedef unsigned char uint8_t;
 
+void startup(void);
+
 void graphic_ctrl_bit_set(uint8_t x);
 void graphic_ctrl_bit_clear(uint8_t x);
 
@@ -14,7 +16,7 @@ void select_controller(uint8_t controller);
 
 void graphic_wait_ready(void);
 
-uint8_t graphic_read(uint8_t controller)
+uint8_t graphic_read(uint8_t controller);
 void graphic_write(uint8_t value, uint8_t controller);
 
 void graphic_write_command(uint8_t command, uint8_t controller);
