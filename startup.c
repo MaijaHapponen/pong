@@ -40,13 +40,24 @@ void update_score(unsigned char player1, unsigned char player2){
 	}
 	
 	//meddelandet utskrivet, gör grafisk display primär igen
+	restart_game();
+}
+
+/*Global variables*/
+POBJECT pball;
+
+void init_ballz(void){
+	
+	
+}
+
+void restart_game(void){
 	init_graphic_port();
 	graphic_initialize();
 }
 
 void main(void)
 {
-	
 	static GEOMETRY ball_geometry={
 		12, //numpoints
 		4,4, //sixex, sixey
