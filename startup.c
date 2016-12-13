@@ -43,14 +43,6 @@ void update_score(unsigned char player1, unsigned char player2){
 	restart_game();
 }
 
-/*Global variables*/
-POBJECT pball;
-
-void init_ballz(void){
-	
-	
-}
-
 void restart_game(void){
 	init_graphic_port();
 	graphic_initialize();
@@ -68,6 +60,17 @@ void main(void)
 			{2,2},{2,3},{3,1},{3,2},
 		}
 	};
+	static GEOMETRY player_geometry={
+		16, //numpoints
+		2,8, //sixex, sixey
+		{
+			//px[0,1,2...]
+			{0,0},{0,1},{1,0},{1,1},
+			{2,0},{2,1},{3,0},{3,1},
+			{4,0},{4,1},{5,0},{5,1},
+			{6,0},{6,1},{7,0},{7,1},
+		}
+	};
 	static OBJECT ball= {
 		&ball_geometry,
 		0,0, //initiala riktningpositioner
@@ -77,7 +80,28 @@ void main(void)
 		move_object,
 		set_object_speed
 	};
+	static OBJECT player1= {
+		&player_geometry,
+		0,0, //initiala riktningpositioner
+		(128-2),0, //initiala startpositioner
+		draw_object,
+		clear_object,
+		move_object,
+		set_object_speed
+	};
+	static OBJECT player2= {
+		&player_geometry,
+		0,0, //initiala riktningpositioner
+		1,1, //initiala startpositioner
+		draw_object,
+		clear_object,
+		move_object,
+		set_object_speed
+	};
 	POBJECT pball= &ball;
+	POBJECT pplayer1=&player1;
+	POBJECT pplayer2=&player2;
+	
 	init_graphic_port();
 	graphic_initialize();
 	#ifndef SIMULATOR
@@ -85,9 +109,10 @@ void main(void)
 	#endif
 	pball->set_speed(pball,4,4);
 	
-	unsigned ascii_loop=0;
 	while(1){
 		pball->move(pball);
+		pplayer1->draw;
+		pplayer2->draw;
 		//delay_milli(40);
 		//if goal update_score
 	}

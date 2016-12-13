@@ -152,7 +152,7 @@ void graphic_clear_screen(void){
 }
 
 void pixel(unsigned x, unsigned y, unsigned set){
-	if((x>128)||(x<0)||(y>64)||(y<0)){
+	if((x>display_width)||(x<0)||(y>display_height)||(y<0)){
 		return;
 	}
 	unsigned char mask,c, controller;

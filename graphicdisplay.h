@@ -7,6 +7,9 @@
 
 typedef unsigned char uint8_t;
 
+int display_width = 128;
+int display_height = 64;
+
 void startup(void);
 
 void graphic_ctrl_bit_set(uint8_t x);
