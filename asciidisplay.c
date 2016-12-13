@@ -1,13 +1,16 @@
 
 #include "asciidisplay.h"
+#include "types.h"
+#include "ports.h"
+#include "delay.h"
 
 // adressera ASCII-display och ettställ de bitar som är 1 i x
 void ascii_ctrl_bit_set(unsigned char x)
 {
 	unsigned char c;
-	c = *portOdrLow;
+	c = *GPIO_E_ODR_LOW;
 	c |= (B_SELECT | x);
-	*portOdrLow = c;
+	*GPIO_E_ODR_LOW = c;
 	
 }
 
@@ -15,15 +18,15 @@ void ascii_ctrl_bit_set(unsigned char x)
 void ascii_ctrl_bit_clear(unsigned char x)
 {
 	unsigned char c;
-	c = *portOdrLow;
+	c = *GPIO_E_ODR_LOW;
 	c = B_SELECT | (c&~x);
-	*portOdrLow = c;
+	*GPIO_E_ODR_LOW = c;
 }
 
 void ascii_write_controller(unsigned char c)
 {
 	ascii_ctrl_bit_set( B_E ); 
-	*portOdrHigh = c;
+	*GPIO_E_ODR_HIGH = c;
 	ascii_ctrl_bit_clear( B_E );
 	delay_250ns();
 }
@@ -34,7 +37,7 @@ unsigned char ascii_read_controller(void)
 	ascii_ctrl_bit_set( B_E ); 
 	delay_250ns(); // max 360 ns
 	delay_250ns();
-	c = *portIdrHigh; 
+	c = *GPIO_E_IDR_HIGH; 
 	ascii_ctrl_bit_clear( B_E );
 	return c;
 }
@@ -56,22 +59,22 @@ void ascii_write_data(unsigned char data)
 unsigned char ascii_read_status(void)
 {
 	unsigned char c; 
-	*portModer &= 0x0000FFFF;
+	*GPIO_E_MODER &= 0x0000FFFF;
 	ascii_ctrl_bit_clear(B_RS);
 	ascii_ctrl_bit_set(B_RW);
 	c = ascii_read_controller();
-	*portModer |= 0x55550000;
+	*GPIO_E_MODER |= 0x55550000;
 	return c;
 }
 
 unsigned char ascii_read_data(void)
 {
 	unsigned char c; 
-	*portModer &= 0x0000FFFF;
+	*GPIO_E_MODER &= 0x0000FFFF;
 	ascii_ctrl_bit_set(B_RS);
 	ascii_ctrl_bit_set(B_RW);
 	c = ascii_read_controller();
-	*portModer |= 0x55550000;
+	*GPIO_E_MODER |= 0x55550000;
 	return c;
 }
 

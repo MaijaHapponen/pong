@@ -14,7 +14,7 @@ void select_controller(uint8_t controller);
 
 void graphic_wait_ready(void);
 
-uint8_t graphic_read(uint8_t controller)
+uint8_t graphic_read(uint8_t controller);
 void graphic_write(uint8_t value, uint8_t controller);
 
 void graphic_write_command(uint8_t command, uint8_t controller);
