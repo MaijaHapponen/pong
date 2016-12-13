@@ -126,5 +126,7 @@ monitor restart</PostConnectCommands>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
     <File Name="delay.h"/>
+    <File Name="types.h"/>
+    <File Name="ports.h"/>
   </VirtualDirectory>
 </CodeLite_Project>
