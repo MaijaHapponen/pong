@@ -2,6 +2,7 @@
 #include "asciidisplay.h"
 #include "ports.h"
 #include "objects.h"
+#include "keypad.h"
  
  
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -102,6 +103,7 @@ void main(void)
 	POBJECT pplayer1=&player1;
 	POBJECT pplayer2=&player2;
 	
+	init_keypad();
 	init_graphic_port();
 	graphic_initialize();
 	#ifndef SIMULATOR

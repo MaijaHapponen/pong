@@ -123,6 +123,7 @@ monitor restart</PostConnectCommands>
     <File Name="graphicdisplay.c"/>
     <File Name="asciidisplay.c"/>
     <File Name="objects.c"/>
+    <File Name="keypad.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
@@ -134,5 +135,6 @@ monitor restart</PostConnectCommands>
     <File Name="asciidisplay.h"/>
     <File Name="graphicdisplay.h"/>
     <File Name="objects.h"/>
+    <File Name="keypad.h"/>
   </VirtualDirectory>
 </CodeLite_Project>
