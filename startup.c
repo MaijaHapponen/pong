@@ -2,6 +2,7 @@
 #include "asciidisplay.h"
 #include "ports.h"
 #include "objects.h"
+#include "keypad.h"
  
  
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -78,6 +79,7 @@ void main(void)
 		set_object_speed
 	};
 	POBJECT pball= &ball;
+	init_keypad();
 	init_graphic_port();
 	graphic_initialize();
 	#ifndef SIMULATOR
