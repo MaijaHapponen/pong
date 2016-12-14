@@ -54,18 +54,15 @@ POBJECT pplayer1=&player1;
 POBJECT pplayer2=&player2;
 
 //Checks if key is pressed and moves correct player.
-void check_key_pressed(unsigned char c)
+void check_key_pressed() //Check key released någonstans. Vart? Ny metod?
 {
-	if(c == 7) //Player 1
+	unsigned char c = 0xC; //keyb();
+	switch(c)
 	{
-		//move player 1 up
-		//movePlayer func shit stuff yaoo
-	}else if(c == 4){ //Player 1
-		//move player 1 down
-	}else if(c == 0xB){ //Player 2
-		//move player 2 up
-	}else if(c == 0xC){ //Player 2
-		//move player 2 down
+		case 7: pplayer1->set_speed(pplayer1, 0, -2); break; //Player 1 up
+		case 4: pplayer1->set_speed(pplayer1, 0, 2); break; //Player 1 down
+		case 0xB: pplayer2->set_speed(pplayer2, 0, -2); break; //Player 2 up
+		case 0xC: pplayer2->set_speed(pplayer2, 0, 2); break; //Player 2 down
 	}
 }
 
@@ -80,9 +77,9 @@ void main(void)
 	pball->set_speed(pball,4,4);
 	
 	while(1){
-		check_key_pressed(keyb());
-		pplayer1->draw(pplayer1);
-		pplayer2->draw(pplayer2);
+		check_key_pressed();
+		pplayer1->move(pplayer1);
+		pplayer2->move(pplayer2);
 		pball->move(pball);
 		//delay_milli(40);
 		//if goal update_score
