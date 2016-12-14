@@ -113,8 +113,8 @@ void main(void)
 	
 	while(1){
 		pball->move(pball);
-		pplayer1->draw;
-		pplayer2->draw;
+		pplayer1->draw(pplayer1);
+		pplayer2->draw(pplayer2);
 		//delay_milli(40);
 		//if goal update_score
 	}
