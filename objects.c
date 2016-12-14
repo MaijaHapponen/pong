@@ -27,14 +27,13 @@ void move_ball(POBJECT obj)
 	clear_object(obj);
 	obj->posx = obj->posx + obj->dirx;
 	obj->posy = obj->posy + obj->diry;
-	if(is_out_of_bounds_x(obj)) //Betyder att x är påväg över kanten, vänd 180°.
+	if(is_out_of_bounds_x(obj)) //Betyder att boll är påväg över kanten (höger, vänater) vänd 180°.
 	{
 		obj->dirx = obj->dirx * (-1);
-	}
-	if(is_out_of_bounds_y(obj)) //Betyder att x är påväg över kanten, vänd 180°.
-	{
+	}if(is_out_of_bounds_y(obj)){
 		obj->diry = obj->diry * (-1);
 	}
+	
 	draw_object(obj);
 }
 void move_player(POBJECT obj){
@@ -47,10 +46,10 @@ void move_player(POBJECT obj){
 }
 
 char is_out_of_bounds_y(POBJECT obj){
-	return (obj->posy<0 || (obj->posy) >(64-(obj->geo->sizey))); 
+	return ((obj->posy)<0 || (obj->posy) >(64-(obj->geo->sizey))); 
 }
 char is_out_of_bounds_x(POBJECT obj){
-	return (obj->posx<0 || (obj->posx)>(128-(obj->geo->sizex))); 
+	return ((obj->posx)<0 || (obj->posx)>(128-(obj->geo->sizex))); 
 }
 
 
@@ -88,7 +87,7 @@ static GEOMETRY player_geometry={
 extern OBJECT ball= {
 	&ball_geometry,
 	0,0, //initiala riktningpositioner
-	1,1, //initiala startpositioner
+	(128/2),(64/2), //initiala startpositioner
 	draw_object,
 	clear_object,
 	move_ball,
@@ -97,7 +96,7 @@ extern OBJECT ball= {
 extern OBJECT player1= {
 	&player_geometry,
 	0,0, //initiala riktningpositioner
-	0,0, //initiala startpositioner
+	1,1, //initiala startpositioner
 	draw_object,
 	clear_object,
 	move_player,
@@ -112,3 +111,6 @@ extern OBJECT player2= {
 	move_player,
 	set_object_speed
 };
+
+extern char player1_score=0;
+extern char player2_score=0;

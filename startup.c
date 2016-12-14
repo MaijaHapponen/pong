@@ -17,12 +17,12 @@ asm volatile(
 	) ;
 }
 
-void update_score(unsigned char player1, unsigned char player2){
+void update_score(){
 	char *s;
 	char test1[12] = "Player 1:  ";
 	char test2[12] = "Player 2:  ";
-	test1[10] = '0'+player1; 
-	test2[10] = '0'+player2; 
+	test1[10] = '0'+player1_score; 
+	test2[10] = '0'+player2_score; 
 	
 	init_ascii_ports();
 	ascii_init();
@@ -47,6 +47,8 @@ void update_score(unsigned char player1, unsigned char player2){
 void restart_game(void){
 	init_graphic_port();
 	graphic_initialize();
+	
+	//Sätt allt på rätt positioner
 }
 
 POBJECT pball= &ball;
@@ -69,6 +71,19 @@ void check_key_pressed(unsigned char c)
 	}
 }
 
+void check_if_goal(void){
+	if((pball->posx)<0) //Betyder att boll är påväg över kanten (vänster), nytt poäng till player 1
+	{
+		player1_score++;
+		update_score();
+	}
+	if((pball->posx) >(128-(pball->geo->sizex)))//Betyder att boll är påväg över kanten (höger), nytt poäng till player 2
+	{
+		player2_score++;
+		update_score();
+	}
+}
+
 void main(void)
 {	
 	init_keypad();
@@ -81,13 +96,12 @@ void main(void)
 	
 	while(1){
 		check_key_pressed(keyb());
+		check_if_goal();
 		pplayer1->draw(pplayer1);
 		pplayer2->draw(pplayer2);
 		pball->move(pball);
 		//delay_milli(40);
 		//if goal update_score
 	}
-	
-	
 }
 

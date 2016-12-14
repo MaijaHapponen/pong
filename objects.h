@@ -42,5 +42,7 @@ char is_out_of_bounds_x(POBJECT obj);
 extern OBJECT ball;
 extern OBJECT player1;
 extern OBJECT player2;
+extern char player1_score;
+extern char player2_score;
 
 #endif //objects_h
