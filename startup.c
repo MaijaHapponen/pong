@@ -52,12 +52,16 @@ void restart_game(void){
 //Checks if key is pressed and moves correct player.
 void check_key_pressed(unsigned char c)
 {
-	if(c == 4 | c == 7) //Left player 1
+	if(c == 7) //Player 1
 	{
-		//move left player 1
-		
-	}else if(c == 0xB | c == 0xC){ //Right player 2
-		//move right player 2
+		//move player 1 up
+		//movePlayer func shit stuff yaoo
+	}else if(c == 4){ //Player 1
+		//move player 1 down
+	}else if(c == 0xB){ //Player 2
+		//move player 2 up
+	}else if(c == 0xC){ //Player 2
+		//move player 2 down
 	}
 }
 
