@@ -40,9 +40,10 @@ void move_ball(POBJECT obj)
 void move_player(POBJECT obj){
 	if(is_out_of_bounds_y(obj))
 		return;
-		
-	//move player	
 	
+	clear_object(obj);
+	obj->posy = obj->posy + obj->diry;
+	draw_object(obj);
 }
 
 char is_out_of_bounds_y(POBJECT obj){
