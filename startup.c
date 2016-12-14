@@ -62,14 +62,24 @@ void main(void)
 		}
 	};
 	static GEOMETRY player_geometry={
-		16, //numpoints
-		2,8, //sixex, sixey
+		28, //numpoints
+		2,14, //sixex, sixey
 		{
 			//px[0,1,2...]
-			{0,0},{0,1},{1,0},{1,1},
-			{2,0},{2,1},{3,0},{3,1},
-			{4,0},{4,1},{5,0},{5,1},
-			{6,0},{6,1},{7,0},{7,1},
+			{0,0},{1,0},
+			{0,1},{1,1},
+			{0,2},{1,2},
+			{0,3},{1,3},
+			{0,4},{1,4},
+			{0,5},{1,5},
+			{0,6},{1,6},
+			{0,7},{1,7},
+			{0,8},{1,8},
+			{0,9},{1,9},
+			{0,10},{1,10},
+			{0,11},{1,11},
+			{0,12},{1,12},
+			{0,13},{1,13},
 		}
 	};
 	static OBJECT ball= {
@@ -112,9 +122,9 @@ void main(void)
 	pball->set_speed(pball,4,4);
 	
 	while(1){
-		pball->move(pball);
 		pplayer1->draw(pplayer1);
 		pplayer2->draw(pplayer2);
+		pball->move(pball);
 		//delay_milli(40);
 		//if goal update_score
 	}

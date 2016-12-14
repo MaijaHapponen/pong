@@ -1,6 +1,8 @@
 
 #include "delay.h"
 
+#define SIMULATOR 1
+
 void delay_250ns(void){
 	*STK_CTRL = 0;
 	*STK_LOAD = (168/4)-1;

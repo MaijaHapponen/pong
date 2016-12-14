@@ -8,7 +8,7 @@ typedef struct tPoint
 	unsigned char y;
 } POINT;
 
-#define MAX_POINTS 20 // ändra?
+#define MAX_POINTS 30 // ändra?
 
 typedef struct tGeometry
 {
