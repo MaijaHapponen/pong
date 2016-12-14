@@ -31,9 +31,16 @@ typedef struct tObj{
 void set_object_speed(POBJECT obj, int speedx, int speedy);
 
 void draw_object(POBJECT obj);
-
 void clear_object(POBJECT obj);
 
-void move_object(POBJECT obj);
+void move_ball(POBJECT obj);
+void move_player(POBJECT obj);
+
+char is_out_of_bounds_y(POBJECT obj);
+char is_out_of_bounds_x(POBJECT obj);
+
+extern OBJECT ball;
+extern OBJECT player1;
+extern OBJECT player2;
 
 #endif //objects_h
