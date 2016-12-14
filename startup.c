@@ -53,6 +53,22 @@ POBJECT pball= &ball;
 POBJECT pplayer1=&player1;
 POBJECT pplayer2=&player2;
 
+//Checks if key is pressed and moves correct player.
+void check_key_pressed(unsigned char c)
+{
+	if(c == 7) //Player 1
+	{
+		//move player 1 up
+		//movePlayer func shit stuff yaoo
+	}else if(c == 4){ //Player 1
+		//move player 1 down
+	}else if(c == 0xB){ //Player 2
+		//move player 2 up
+	}else if(c == 0xC){ //Player 2
+		//move player 2 down
+	}
+}
+
 void main(void)
 {	
 	init_keypad();
@@ -64,6 +80,7 @@ void main(void)
 	pball->set_speed(pball,4,4);
 	
 	while(1){
+		check_key_pressed(keyb());
 		pplayer1->draw(pplayer1);
 		pplayer2->draw(pplayer2);
 		pball->move(pball);
