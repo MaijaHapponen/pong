@@ -49,6 +49,18 @@ void restart_game(void){
 	graphic_initialize();
 }
 
+//Checks if key is pressed and moves correct player.
+void check_key_pressed(unsigned char c)
+{
+	if(c == 4 | c == 7) //Left player 1
+	{
+		//move left player 1
+		
+	}else if(c == 0xB | c == 0xC){ //Right player 2
+		//move right player 2
+	}
+}
+
 void main(void)
 {
 	static GEOMETRY ball_geometry={
@@ -122,6 +134,7 @@ void main(void)
 	pball->set_speed(pball,4,4);
 	
 	while(1){
+		check_key_pressed(keyb());
 		pplayer1->draw(pplayer1);
 		pplayer2->draw(pplayer2);
 		pball->move(pball);

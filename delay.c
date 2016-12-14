@@ -1,7 +1,7 @@
 
 #include "delay.h"
 
-#define SIMULATOR 1
+//#define SIMULATOR 1
 
 void delay_250ns(void){
 	*STK_CTRL = 0;
