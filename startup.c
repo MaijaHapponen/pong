@@ -58,7 +58,7 @@ POBJECT pplayer2=&player2;
 //Checks if key is pressed and moves correct player.
 void check_key_pressed() //Check key released någonstans. Vart? Ny metod?
 {
-	unsigned char c = 0xC; //keyb();
+	unsigned char c = keyb();
 	switch(c)
 	{
 		case 7: pplayer1->set_speed(pplayer1, 0, -2); break; //Player 1 up
@@ -89,19 +89,13 @@ void main(void)
 	#ifndef SIMULATOR
 		graphic_clear_screen();
 	#endif
-	pball->set_speed(pball,4,4);
+	pball->set_speed(pball,1,1);
 	
 	while(1){
-<<<<<<< HEAD
-		check_key_pressed(keyb());
 		check_if_goal();
-		pplayer1->draw(pplayer1);
-		pplayer2->draw(pplayer2);
-=======
 		check_key_pressed();
 		pplayer1->move(pplayer1);
 		pplayer2->move(pplayer2);
->>>>>>> a43ce623dd8563f9bd72d6691f69dd0cb4136108
 		pball->move(pball);
 		//delay_milli(40);
 		//if goal update_score
