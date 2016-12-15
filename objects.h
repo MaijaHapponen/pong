@@ -45,4 +45,10 @@ extern OBJECT player2;
 extern char player1_score;
 extern char player2_score;
 
+static POBJECT ptrball;
+static POBJECT ptrplayer1;
+static POBJECT ptrplayer2;
+
+char if_hit_object(POBJECT obj);
+
 #endif //objects_h

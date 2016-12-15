@@ -30,7 +30,7 @@ void move_ball(POBJECT obj)
 	if(is_out_of_bounds_x(obj)) //Betyder att boll är påväg över kanten (höger, vänater) vänd 180°.
 	{
 		obj->dirx = obj->dirx * (-1);
-	}if(is_out_of_bounds_y(obj)){
+	}if(is_out_of_bounds_y(obj) || if_hit_object(obj)){
 		obj->diry = obj->diry * (-1);
 	}
 	
@@ -87,7 +87,7 @@ static GEOMETRY player_geometry={
 extern OBJECT ball= {
 	&ball_geometry,
 	0,0, //initiala riktningpositioner
-	(128/2),(64/2), //initiala startpositioner
+	(128/2-2),(64/2-2), //initiala startpositioner
 	draw_object,
 	clear_object,
 	move_ball,
@@ -114,3 +114,32 @@ extern OBJECT player2= {
 
 extern char player1_score=0;
 extern char player2_score=0;
+
+static POBJECT ptrball = &ball;
+static POBJECT ptrplayer1 = &player1;
+static POBJECT ptrplayer2 = &player2;
+
+char if_hit_object(POBJECT obj){
+	int x = obj->posx;
+	int y = obj->posy;
+	
+	int sizex = obj->geo->sizex;
+	int sizey = obj->geo->sizey;
+	
+	int player1x = ptrplayer1->posx;
+	int player1y = ptrplayer1->posy;
+	
+	int player2x = ptrplayer2->posx;
+	int player2y = ptrplayer2->posy;
+	
+	int playerheight = ptrplayer1->geo->sizey;
+	int playerwidth = ptrplayer1->geo->sizex;
+	
+	if(((x+sizex)>=player2x) && (y>=player2y) && (y<=(player2y+playerheight))&& ((y+sizey)>=player2y) && ((y+sizey)<=(player2y+playerheight))){
+		return 1;
+	}
+	if((x<=(player1x+playerwidth)) && (y>=player1y) && (y<=(player1y+playerheight))&& ((y+sizey)>=player1y) && ((y+sizey)<=(player1y+playerheight))){
+		return 1;
+	}
+	return 0;
+}
